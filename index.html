@@ -54,11 +54,22 @@
         }
         
         .deadline-banner {
-            background: #ff6b6b;
+            background: linear-gradient(90deg, #ff0000, #cc0000);
             color: white;
-            padding: 15px;
+            padding: 18px;
             text-align: center;
             font-weight: bold;
+            font-size: 18px;
+            animation: pulse-banner 2s ease-in-out infinite;
+        }
+        @keyframes pulse-banner {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.85; }
+        }
+        .deadline-banner .countdown {
+            font-size: 22px;
+            display: block;
+            margin-top: 4px;
         }
         
         .content {
@@ -344,8 +355,8 @@
             <p>Find out if you need to comply with Making Tax Digital</p>
         </div>
         
-        <div class="deadline-banner">
-            ⚠️ MTD for Income Tax starts April 6, 2026
+        <div class="deadline-banner" id="mtd-banner">
+            ⚠️ Making Tax Digital starts in <span class="countdown" id="banner-countdown"></span>
         </div>
         
         <div class="content">
@@ -643,6 +654,36 @@
             };
             return types[type] || type;
         }
+        
+        // Live countdown banner
+        function updateBannerCountdown() {
+            const deadline = new Date('2026-04-06T00:00:00+01:00');
+            const now = new Date();
+            const diff = deadline - now;
+            const banner = document.getElementById('banner-countdown');
+            const bannerEl = document.getElementById('mtd-banner');
+            
+            if (diff <= 0) {
+                banner.textContent = 'MTD is NOW IN EFFECT';
+                bannerEl.style.background = 'linear-gradient(90deg, #cc0000, #880000)';
+                return;
+            }
+            
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            
+            if (days > 1) {
+                banner.textContent = days + ' days, ' + hours + ' hours';
+            } else if (days === 1) {
+                banner.textContent = '1 day, ' + hours + ' hours — ACT NOW';
+            } else {
+                banner.textContent = hours + ' hours, ' + mins + ' minutes — TODAY IS THE DAY';
+            }
+        }
+        
+        updateBannerCountdown();
+        setInterval(updateBannerCountdown, 60000);
     </script>
 </body>
 </html>
