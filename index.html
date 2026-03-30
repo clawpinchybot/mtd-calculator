@@ -3,38 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="canonical" href="https://clawpinchybot.github.io/mtd-calculator/">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="MTD Readiness Calculator - Are You Ready for Making Tax Digital 2026?">
-    <meta property="og:description" content="Free tool to check if you need to comply with Making Tax Digital. Calculate your deadline, see what you need to do, and find the right software.">
-    <meta property="og:url" content="https://clawpinchybot.github.io/mtd-calculator/">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="MTD Readiness Calculator - Are You Ready for Making Tax Digital 2026?">
-    <meta name="twitter:description" content="Free tool to check if you need to comply with Making Tax Digital. Calculate your deadline, see what you need to do.">
-    <title>MTD Readiness Calculator - Are You Ready for Making Tax Digital 2026?</title>
-    <meta name="description" content="Free MTD readiness checker for UK sole traders. Check your MTD deadline, see quarterly submission dates, and find MTD-compliant software. April 2026 start.">
-    <meta name="keywords" content="MTD, Making Tax Digital, HMRC, self-assessment, sole trader, April 2026, tax compliance">
-    <meta name="author" content="Sterling">
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://clawpinchybot.github.io/mtd-calculator/">
-    <meta property="og:description" content="Free checker: Find out if you need to comply with Making Tax Digital for Income Tax. Check your deadline in 30 seconds.">
-    <meta property="og:image" content="https://clawpinchybot.github.io/mtd-calculator/screenshot.png">
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://clawpinchybot.github.io/mtd-calculator/">
-    <meta property="twitter:title" content="MTD Readiness Calculator - Are You Ready for Making Tax Digital 2026?">
-    <meta property="twitter:description" content="Free checker: Find out if you need to comply with Making Tax Digital for Income Tax. Check your deadline in 30 seconds.">
-    <meta property="twitter:image" content="https://clawpinchybot.github.io/mtd-calculator/screenshot.png">
-
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://clawpinchybot.github.io/mtd-calculator/">
+    <title>MTD Readiness Calculator | Are You Ready for Making Tax Digital?</title>
+    <meta name="description" content="Free MTD readiness checker for UK sole traders and landlords. Find out if you need to comply, when your deadline is, and what software you need.">
+    <meta name="keywords" content="MTD, Making Tax Digital, sole trader, landlord, HMRC, tax, quarterly reporting">
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Open Graph -->
+    <meta property="og:title" content="MTD Readiness Calculator | Are You Ready for Making Tax Digital?">
+    <meta property="og:description" content="Free checker for UK sole traders and landlords. Find out your MTD deadline in 2 minutes.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mtd-calculator.uk">
     
     <style>
         * {
@@ -43,556 +20,670 @@
             box-sizing: border-box;
         }
         
-        :root {
-            --primary: #3b82f6;
-            --primary-dark: #2563eb;
-            --success: #10b981;
-            --warning: #f59e0b;
-            --danger: #ef4444;
-            --text: #1f2937;
-            --text-light: #6b7280;
-            --bg: #f9fafb;
-            --card: #ffffff;
-            --border: #e5e7eb;
-        }
-        
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            color: var(--text);
-            line-height: 1.6;
-            background: var(--bg);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
         }
         
         .container {
-            max-width: 800px;
+            max-width: 700px;
             margin: 0 auto;
-            padding: 0 24px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
         }
         
-        /* Header */
-        header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+        .header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
             color: white;
-            padding: 40px 0;
+            padding: 40px 30px;
             text-align: center;
         }
         
-        header h1 {
-            font-size: 32px;
-            font-weight: 700;
-            margin-bottom: 12px;
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
         }
         
-        header p {
+        .header p {
+            opacity: 0.8;
+            font-size: 16px;
+        }
+        
+        .deadline-banner {
+            background: linear-gradient(90deg, #ff0000, #cc0000);
+            color: white;
+            padding: 18px;
+            text-align: center;
+            font-weight: bold;
             font-size: 18px;
-            opacity: 0.9;
-            max-width: 600px;
-            margin: 0 auto;
+            animation: pulse-banner 2s ease-in-out infinite;
         }
-        
-        .badge {
-            display: inline-block;
-            background: rgba(255,255,255,0.2);
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 14px;
-            margin-top: 16px;
+        @keyframes pulse-banner {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.85; }
         }
-        
-        /* Main Calculator */
-        .calculator {
-            padding: 40px 0;
-        }
-        
-        .card {
-            background: var(--card);
-            border-radius: 12px;
-            padding: 32px;
-            margin-bottom: 24px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-        }
-        
-        .card h2 {
-            font-size: 24px;
-            margin-bottom: 24px;
-            color: var(--text);
-        }
-        
-        .form-group {
-            margin-bottom: 24px;
-        }
-        
-        .form-group label {
+        .deadline-banner .countdown {
+            font-size: 22px;
             display: block;
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: var(--text);
-        }
-        
-        .form-group .hint {
-            font-size: 14px;
-            color: var(--text-light);
             margin-top: 4px;
         }
         
-        input[type="number"] {
-            width: 100%;
-            padding: 12px 16px;
-            border: 2px solid var(--border);
-            border-radius: 8px;
-            font-size: 16px;
-            transition: border-color 0.2s;
+        .content {
+            padding: 40px 30px;
         }
         
-        input[type="number"]:focus {
-            outline: none;
-            border-color: var(--primary);
-        }
-        
-        .checkbox-group {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 16px;
-            background: var(--bg);
-            border-radius: 8px;
-            cursor: pointer;
-        }
-        
-        .checkbox-group input[type="checkbox"] {
-            width: 20px;
-            height: 20px;
-            cursor: pointer;
-        }
-        
-        .checkbox-group label {
-            margin: 0;
-            cursor: pointer;
-            flex: 1;
-        }
-        
-        .btn {
-            display: inline-block;
-            padding: 14px 32px;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.2s;
-            border: none;
-            cursor: pointer;
-            text-align: center;
-        }
-        
-        .btn-primary {
-            background: var(--primary);
-            color: white;
-            width: 100%;
-        }
-        
-        .btn-primary:hover {
-            background: var(--primary-dark);
-            transform: translateY(-1px);
-        }
-        
-        /* Results */
-        .result-card {
+        .step {
             display: none;
         }
         
-        .result-card.show {
+        .step.active {
             display: block;
-            animation: slideIn 0.3s ease-out;
+            animation: fadeIn 0.3s ease;
         }
         
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
-        .status-box {
-            padding: 24px;
+        .question {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 25px;
+            color: #1a1a2e;
+        }
+        
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .option {
+            padding: 18px 20px;
+            border: 2px solid #e0e0e0;
             border-radius: 12px;
-            margin-bottom: 24px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .option:hover {
+            border-color: #667eea;
+            background: #f8f9ff;
+        }
+        
+        .option.selected {
+            border-color: #667eea;
+            background: #667eea;
+            color: white;
+        }
+        
+        .option input {
+            display: none;
+        }
+        
+        .option-icon {
+            font-size: 24px;
+        }
+        
+        .progress {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 30px;
+            justify-content: center;
+        }
+        
+        .progress-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #e0e0e0;
+            transition: all 0.3s;
+        }
+        
+        .progress-dot.active {
+            background: #667eea;
+            transform: scale(1.2);
+        }
+        
+        .progress-dot.complete {
+            background: #4CAF50;
+        }
+        
+        .result {
             text-align: center;
         }
         
-        .status-box.required {
-            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
-            border: 2px solid #ef4444;
+        .result-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
         }
         
-        .status-box.not-required {
-            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
-            border: 2px solid #10b981;
-        }
-        
-        .status-box.future {
-            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-            border: 2px solid #f59e0b;
-        }
-        
-        .status-box h3 {
+        .result-status {
             font-size: 28px;
-            margin-bottom: 8px;
+            font-weight: bold;
+            margin-bottom: 10px;
         }
         
-        .status-box p {
-            font-size: 16px;
-            color: var(--text);
+        .result-status.required {
+            color: #ff6b6b;
         }
         
-        .deadline-badge {
-            display: inline-block;
-            background: rgba(0,0,0,0.1);
-            padding: 4px 12px;
-            border-radius: 6px;
-            font-weight: 600;
-            margin-top: 8px;
+        .result-status.not-required {
+            color: #4CAF50;
         }
         
-        .checklist {
-            list-style: none;
-            margin: 24px 0;
+        .result-status.exempt {
+            color: #ff9800;
         }
         
-        .checklist li {
+        .result-details {
+            background: #f5f5f5;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 25px 0;
+            text-align: left;
+        }
+        
+        .result-detail {
+            display: flex;
+            justify-content: space-between;
             padding: 12px 0;
-            padding-left: 32px;
-            position: relative;
-            border-bottom: 1px solid var(--border);
+            border-bottom: 1px solid #e0e0e0;
         }
         
-        .checklist li:last-child {
+        .result-detail:last-child {
             border-bottom: none;
         }
         
-        .checklist li::before {
-            content: '☐';
+        .detail-label {
+            color: #666;
+        }
+        
+        .detail-value {
+            font-weight: 600;
+            color: #1a1a2e;
+        }
+        
+        .deadline-urgent {
+            color: #ff6b6b;
+            font-weight: bold;
+        }
+        
+        .next-steps {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 25px 0;
+            text-align: left;
+        }
+        
+        .next-steps h3 {
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        
+        .next-steps ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .next-steps li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .next-steps li:before {
+            content: "✓";
             position: absolute;
             left: 0;
-            font-size: 20px;
+            color: #4CAF50;
         }
         
-        .software-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 16px;
-            margin-top: 24px;
-        }
-        
-        .software-card {
-            border: 2px solid var(--border);
+        .cta-button {
+            display: inline-block;
+            background: #1a1a2e;
+            color: white;
+            padding: 15px 30px;
             border-radius: 8px;
-            padding: 20px;
-            text-align: center;
-            transition: all 0.2s;
             text-decoration: none;
-            color: var(--text);
+            font-weight: 600;
+            margin: 10px 5px;
+            transition: transform 0.2s;
         }
         
-        .software-card:hover {
-            border-color: var(--primary);
+        .cta-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
         
-        .software-card h4 {
+        .cta-button.primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .disclaimer {
+            font-size: 12px;
+            color: #999;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+            line-height: 1.5;
+        }
+        
+        .restart-btn {
+            background: none;
+            border: 2px solid #667eea;
+            color: #667eea;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-top: 20px;
+        }
+        
+        .restart-btn:hover {
+            background: #667eea;
+            color: white;
+        }
+        
+        .income-input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
             font-size: 18px;
-            margin-bottom: 8px;
-        }
-        
-        .software-card .price {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 4px;
-        }
-        
-        .software-card .price span {
-            font-size: 14px;
-            font-weight: 400;
-            color: var(--text-light);
-        }
-        
-        .software-card .features {
-            font-size: 14px;
-            color: var(--text-light);
-            margin-top: 8px;
-        }
-        
-        .info-box {
-            background: #eff6ff;
-            border-left: 4px solid var(--primary);
-            padding: 16px 20px;
-            margin: 24px 0;
-            border-radius: 4px;
-        }
-        
-        .info-box h4 {
-            font-size: 16px;
-            margin-bottom: 8px;
-            color: var(--primary-dark);
-        }
-        
-        .info-box p {
-            font-size: 14px;
-            color: var(--text);
-        }
-        
-        /* Footer */
-        footer {
-            padding: 40px 0;
             text-align: center;
-            color: var(--text-light);
-            font-size: 14px;
-            border-top: 1px solid var(--border);
-            margin-top: 40px;
+            margin-bottom: 15px;
         }
         
-        /* Mobile */
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 24px;
+        .income-input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .continue-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .continue-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .continue-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 22px;
             }
             
-            header p {
-                font-size: 16px;
+            .question {
+                font-size: 18px;
             }
             
-            .card {
-                padding: 24px;
+            .content {
+                padding: 25px 20px;
             }
         }
     </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"MTD Readiness Calculator","description":"Free tool to check if you need to comply with Making Tax Digital 2026","url":"https://clawpinchybot.github.io/mtd-calculator/","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"GBP"}}</script>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1>MTD Readiness Calculator</h1>
-            <p>Find out if you need to comply with Making Tax Digital, when your deadline is, and what software to use.</p>
-            <span class="badge">⚠️ 860,000+ affected from April 2026</span>
+    <div class="container">
+        <div class="header">
+            <h1>📊 MTD Readiness Calculator</h1>
+            <p>Find out if you need to comply with Making Tax Digital</p>
         </div>
-    </header>
+        
+        <div class="deadline-banner" id="mtd-banner">
+            ⚠️ Making Tax Digital starts in <span class="countdown" id="banner-countdown"></span>
+        </div>
+        
+        <div class="content">
+            <!-- Step 1: Income Type -->
+            <div class="step active" id="step1">
+                <div class="progress">
+                    <div class="progress-dot active"></div>
+                    <div class="progress-dot"></div>
+                    <div class="progress-dot"></div>
+                </div>
+                
+                <div class="question">What type of income do you have?</div>
+                
+                <div class="options">
+                    <label class="option" data-value="sole_trader">
+                        <span class="option-icon">💼</span>
+                        <span>Sole trader / self-employed</span>
+                        <input type="radio" name="income_type" value="sole_trader">
+                    </label>
+                    
+                    <label class="option" data-value="landlord">
+                        <span class="option-icon">🏠</span>
+                        <span>Landlord / rental income</span>
+                        <input type="radio" name="income_type" value="landlord">
+                    </label>
+                    
+                    <label class="option" data-value="both">
+                        <span class="option-icon">💼🏠</span>
+                        <span>Both sole trader AND landlord</span>
+                        <input type="radio" name="income_type" value="both">
+                    </label>
+                    
+                    <label class="option" data-value="none">
+                        <span class="option-icon">❓</span>
+                        <span>Neither / just checking</span>
+                        <input type="radio" name="income_type" value="none">
+                    </label>
+                </div>
+            </div>
+            
+            <!-- Step 2: Income Amount -->
+            <div class="step" id="step2">
+                <div class="progress">
+                    <div class="progress-dot complete"></div>
+                    <div class="progress-dot active"></div>
+                    <div class="progress-dot"></div>
+                </div>
+                
+                <div class="question">What's your total qualifying income? (2024-25 tax year)</div>
+                <p style="color: #666; margin-bottom: 20px; font-size: 14px;">Add up your self-employment turnover + rental income (before expenses)</p>
+                
+                <input type="number" class="income-input" id="income_amount" placeholder="£0" min="0" step="1000">
+                
+                <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px;">
+                    <button class="income-preset" onclick="setIncome(30000)">£30k</button>
+                    <button class="income-preset" onclick="setIncome(50000)">£50k</button>
+                    <button class="income-preset" onclick="setIncome(75000)">£75k</button>
+                    <button class="income-preset" onclick="setIncome(100000)">£100k</button>
+                </div>
+                
+                <button class="continue-btn" id="continue_btn" disabled onclick="showResult()">Continue</button>
+            </div>
+            
+            <!-- Step 3: Result -->
+            <div class="step" id="step3">
+                <div class="progress">
+                    <div class="progress-dot complete"></div>
+                    <div class="progress-dot complete"></div>
+                    <div class="progress-dot complete"></div>
+                </div>
+                
+                <div class="result" id="result_content">
+                    <!-- Filled dynamically -->
+                </div>
+            </div>
+        </div>
+    </div>
     
-    <main class="calculator">
-        <div class="container">
-            <!-- Step 1: Input -->
-            <div class="card" id="step1">
-                <h2>Check Your MTD Status</h2>
+    <script>
+        // State
+        let incomeType = null;
+        let incomeAmount = 0;
+        
+        // Option selection
+        document.querySelectorAll('.option').forEach(option => {
+            option.addEventListener('click', function() {
+                document.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+                this.classList.add('selected');
+                incomeType = this.dataset.value;
                 
-                <div class="form-group">
-                    <label>Self-Employment Income (2024/25 Tax Year)</label>
-                    <input type="number" id="selfEmploymentIncome" placeholder="e.g. 55000" min="0">
-                    <p class="hint">Your total turnover from self-employment before expenses</p>
-                </div>
+                setTimeout(() => {
+                    if (incomeType === 'none') {
+                        // Show not applicable result
+                        showNotApplicable();
+                    } else {
+                        document.getElementById('step1').classList.remove('active');
+                        document.getElementById('step2').classList.add('active');
+                    }
+                }, 300);
+            });
+        });
+        
+        // Income input
+        const incomeInput = document.getElementById('income_amount');
+        const continueBtn = document.getElementById('continue_btn');
+        
+        incomeInput.addEventListener('input', function() {
+            incomeAmount = parseInt(this.value) || 0;
+            continueBtn.disabled = incomeAmount <= 0;
+        });
+        
+        function setIncome(amount) {
+            incomeInput.value = amount;
+            incomeAmount = amount;
+            continueBtn.disabled = false;
+        }
+        
+        // Add styles for preset buttons
+        const style = document.createElement('style');
+        style.textContent = `
+            .income-preset {
+                padding: 8px 16px;
+                border: 2px solid #e0e0e0;
+                border-radius: 8px;
+                background: white;
+                cursor: pointer;
+                font-size: 14px;
+                transition: all 0.2s;
+            }
+            .income-preset:hover {
+                border-color: #667eea;
+                background: #f8f9ff;
+            }
+        `;
+        document.head.appendChild(style);
+        
+        function showNotApplicable() {
+            document.getElementById('step1').classList.remove('active');
+            document.getElementById('step3').classList.add('active');
+            
+            document.getElementById('result_content').innerHTML = `
+                <div class="result-icon">ℹ️</div>
+                <div class="result-status not-required">MTD Doesn't Apply to You</div>
+                <p style="color: #666; margin: 20px 0;">Making Tax Digital for Income Tax only applies to sole traders and landlords with qualifying income over certain thresholds.</p>
                 
-                <div class="form-group">
-                    <label>Property Rental Income (2024/25 Tax Year)</label>
-                    <input type="number" id="propertyIncome" placeholder="e.g. 25000" min="0">
-                    <p class="hint">Total rent received before deducting expenses</p>
-                </div>
-                
-                <div class="form-group">
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="currentlyUsingSoftware">
-                        <label for="currentlyUsingSoftware">
-                            <strong>I already use accounting software</strong> (Xero, QuickBooks, FreeAgent, etc.)
-                        </label>
+                <div class="result-details">
+                    <div class="result-detail">
+                        <span class="detail-label">Your situation</span>
+                        <span class="detail-value">Not a sole trader or landlord</span>
+                    </div>
+                    <div class="result-detail">
+                        <span class="detail-label">MTD required?</span>
+                        <span class="detail-value" style="color: #4CAF50;">No</span>
                     </div>
                 </div>
                 
-                <button class="btn btn-primary" onclick="calculateMTD()">Check My Status →</button>
-            </div>
-            
-            <!-- Results -->
-            <div class="result-card card" id="resultCard">
-                <div id="resultContent"></div>
-            </div>
-        </div>
-    </main>
-    
-    <footer>
-        <div class="container">
-            <p>Built for UK sole traders and landlords. Free tool, no data stored.</p>
-            <p style="margin-top: 8px;">Last updated: February 2026 | <a href="https://www.gov.uk/guidance/making-tax-digital-for-income-tax" target="_blank">Official HMRC Guidance →</a></p>
-        </div>
-    </footer>
-    
-    <script>
-        function calculateMTD() {
-            const selfEmployment = parseFloat(document.getElementById('selfEmploymentIncome').value) || 0;
-            const property = parseFloat(document.getElementById('propertyIncome').value) || 0;
-            const usingSoftware = document.getElementById('currentlyUsingSoftware').checked;
-            
-            const totalIncome = selfEmployment + property;
-            
-            let status, deadline, requirements, className;
-            
-            if (totalIncome >= 50000) {
-                status = 'You MUST comply with MTD';
-                deadline = 'April 2026';
-                className = 'required';
-                requirements = getRequirements('required', usingSoftware);
-            } else if (totalIncome >= 30000) {
-                status = 'You WILL need to comply';
-                deadline = 'April 2027';
-                className = 'future';
-                requirements = getRequirements('future', usingSoftware);
-            } else if (totalIncome >= 20000) {
-                status = 'You MAY need to comply';
-                deadline = 'April 2028';
-                className = 'future';
-                requirements = getRequirements('future', usingSoftware);
-            } else {
-                status = 'MTD does NOT apply to you (yet)';
-                deadline = 'Not required';
-                className = 'not-required';
-                requirements = getRequirements('not-required', usingSoftware);
-            }
-            
-            const resultHTML = `
-                <div class="status-box ${className}">
-                    <h3>${status}</h3>
-                    <p>Based on your qualifying income of <strong>£${totalIncome.toLocaleString()}</strong></p>
-                    <span class="deadline-badge">📅 Deadline: ${deadline}</span>
-                </div>
+                <p style="color: #666;">If you're employed (PAYE) or have other income types, MTD for Income Tax doesn't affect you yet.</p>
                 
-                ${requirements}
-                
-                ${totalIncome >= 20000 ? `
-                <div class="info-box">
-                    <h4>💰 Affiliate Disclosure</h4>
-                    <p>We earn a commission if you sign up through our links. This doesn't cost you extra and helps keep this tool free.</p>
-                </div>
-                
-                <h3 style="margin-top: 32px; margin-bottom: 16px;">Recommended Software</h3>
-                <div class="software-grid">
-                    <a href="https://www.xero.com/uk/signup/?utm_source=mtd-calculator&utm_medium=referral&utm_campaign=sterling" target="_blank" class="software-card" rel="noopener">
-                        <h4>Xero</h4>
-                        <div class="price">£15<span>/mo</span></div>
-                        <div class="features">Best for growing businesses<br>Full accounting + MTD</div>
-                    </a>
-                    
-                    <a href="https://quickbooks.intuit.com/uk/?utm_source=mtd-calculator&utm_medium=referral&utm_campaign=sterling" target="_blank" class="software-card" rel="noopener">
-                        <h4>QuickBooks</h4>
-                        <div class="price">£12<span>/mo</span></div>
-                        <div class="features">Easy to use<br>MTD ready</div>
-                    </a>
-                    
-                    <a href="https://www.freeagent.com/?utm_source=mtd-calculator&utm_medium=referral&utm_campaign=sterling" target="_blank" class="software-card" rel="noopener">
-                        <h4>FreeAgent</h4>
-                        <div class="price">£19<span>/mo</span></div>
-                        <div class="features">Great for freelancers<br>All-in-one solution</div>
-                    </a>
-                </div>
-                ` : ''}
-                
-                <button class="btn btn-primary" style="margin-top: 24px;" onclick="location.reload()">← Calculate Again</button>
+                <button class="restart-btn" onclick="location.reload()">Start Again</button>
             `;
-            
-            document.getElementById('resultContent').innerHTML = resultHTML;
-            document.getElementById('resultCard').classList.add('show');
-            document.getElementById('step1').style.display = 'none';
-            
-            // Scroll to results
-            document.getElementById('resultCard').scrollIntoView({ behavior: 'smooth' });
         }
         
-        function getRequirements(status, usingSoftware) {
-            if (status === 'not-required') {
-                return `
-                    <div class="info-box">
-                        <h4>✅ Good News!</h4>
-                        <p>Your income is below the threshold. You can continue with annual self-assessment for now. Keep an eye on your income - if it grows above £20,000, you'll need to prepare for MTD.</p>
+        function showResult() {
+            document.getElementById('step2').classList.remove('active');
+            document.getElementById('step3').classList.add('active');
+            
+            const threshold = 50000; // April 2026 threshold
+            const isRequired = incomeAmount >= threshold;
+            
+            // Calculate deadline
+            let deadline, phase;
+            if (incomeAmount >= 50000) {
+                deadline = "April 6, 2026";
+                phase = "Phase 1";
+            } else if (incomeAmount >= 30000) {
+                deadline = "April 6, 2027";
+                phase = "Phase 2";
+            } else {
+                deadline = "April 6, 2028";
+                phase = "Phase 3";
+            }
+            
+            // Calculate urgency
+            const now = new Date();
+            const april2026 = new Date('2026-04-06');
+            const daysUntil = Math.ceil((april2026 - now) / (1000 * 60 * 60 * 24));
+            
+            let resultHTML = '';
+            
+            if (isRequired) {
+                resultHTML = `
+                    <div class="result-icon">⚠️</div>
+                    <div class="result-status required">YES - You Must Comply</div>
+                    <p style="color: #666; margin: 20px 0;">Based on your income, you're required to use Making Tax Digital compliant software.</p>
+                    
+                    <div class="result-details">
+                        <div class="result-detail">
+                            <span class="detail-label">Income type</span>
+                            <span class="detail-value">${formatIncomeType(incomeType)}</span>
+                        </div>
+                        <div class="result-detail">
+                            <span class="detail-label">Qualifying income</span>
+                            <span class="detail-value">£${incomeAmount.toLocaleString()}</span>
+                        </div>
+                        <div class="result-detail">
+                            <span class="detail-label">MTD deadline</span>
+                            <span class="detail-value ${daysUntil < 60 ? 'deadline-urgent' : ''}">${deadline}</span>
+                        </div>
+                        <div class="result-detail">
+                            <span class="detail-label">Time to prepare</span>
+                            <span class="detail-value ${daysUntil < 60 ? 'deadline-urgent' : ''}">${daysUntil < 60 ? '⚠️ ' + daysUntil + ' days' : daysUntil + ' days'}</span>
+                        </div>
+                        <div class="result-detail">
+                            <span class="detail-label">What you need</span>
+                            <span class="detail-value">MTD-compatible software</span>
+                        </div>
+                    </div>
+                    
+                    <div class="next-steps">
+                        <h3>📋 What You Need to Do:</h3>
+                        <ul>
+                            <li>Sign up for MTD-compatible software (see below)</li>
+                            <li>Keep digital records of all income & expenses</li>
+                            <li>Submit quarterly updates to HMRC</li>
+                            <li>File your end-of-year return digitally</li>
+                        </ul>
+                    </div>
+                    
+                    <h3 style="margin: 25px 0 15px;">Recommended MTD Software:</h3>
+                    <div>
+                        <a href="https://www.xero.com/uk/signup/" class="cta-button primary" target="_blank" rel="nofollow">Try Xero (Free Trial)</a>
+                        <a href="https://quickbooks.intuit.com/uk/" class="cta-button" target="_blank" rel="nofollow">Try QuickBooks</a>
+                    </div>
+                    <p style="font-size: 13px; color: #999; margin-top: 15px;">Both are HMRC-recognised for MTD for Income Tax</p>
+                `;
+            } else {
+                resultHTML = `
+                    <div class="result-icon">✅</div>
+                    <div class="result-status exempt">Not Yet Required</div>
+                    <p style="color: #666; margin: 20px 0;">Your income is below the current threshold, but you'll need to comply in a later phase.</p>
+                    
+                    <div class="result-details">
+                        <div class="result-detail">
+                            <span class="detail-label">Income type</span>
+                            <span class="detail-value">${formatIncomeType(incomeType)}</span>
+                        </div>
+                        <div class="result-detail">
+                            <span class="detail-label">Qualifying income</span>
+                            <span class="detail-value">£${incomeAmount.toLocaleString()}</span>
+                        </div>
+                        <div class="result-detail">
+                            <span class="detail-label">Your deadline</span>
+                            <span class="detail-value">${deadline} (${phase})</span>
+                        </div>
+                        <div class="result-detail">
+                            <span class="detail-label">Current threshold</span>
+                            <span class="detail-value">£50,000+ (April 2026)</span>
+                        </div>
+                    </div>
+                    
+                    <div class="next-steps">
+                        <h3>💡 What This Means:</h3>
+                        <ul>
+                            <li>You don't need to comply until ${deadline.split(',')[0]}</li>
+                            <li>Consider getting software ready early</li>
+                            <li>Start keeping digital records now</li>
+                            <li>Watch for threshold changes</li>
+                        </ul>
+                    </div>
+                    
+                    <h3 style="margin: 25px 0 15px;">Prepare Early with MTD Software:</h3>
+                    <div>
+                        <a href="https://www.xero.com/uk/signup/" class="cta-button primary" target="_blank" rel="nofollow">Try Xero (Free Trial)</a>
+                        <a href="https://quickbooks.intuit.com/uk/" class="cta-button" target="_blank" rel="nofollow">Try QuickBooks</a>
                     </div>
                 `;
             }
             
-            const softwareItem = usingSoftware 
-                ? '<li>Check your current software is MTD-compliant (most modern software is)</li>'
-                : '<li><strong>Choose MTD-compliant software</strong> - see recommendations below</li>';
-            
-            return `
-                <h3 style="margin-top: 24px;">What You Need To Do:</h3>
-                <ul class="checklist">
-                    ${softwareItem}
-                    <li>Keep digital records of all income and expenses</li>
-                    <li>Submit quarterly updates to HMRC (5 deadlines per year)</li>
-                    <li>Submit a final declaration at year-end</li>
-                    <li>Connect your software to your HMRC account</li>
-                </ul>
-                
-                <div class="info-box">
-                    <h4>⚠️ Grace Period</h4>
-                    <p>No penalty points for late quarterly updates in your first year (2026/27). But late payment penalties still apply, so don't ignore it!</p>
+            resultHTML += `
+                <div class="disclaimer">
+                    <strong>Disclaimer:</strong> This tool provides general guidance only. The £50,000 threshold applies to the 2024-25 tax year for April 2026 compliance. Thresholds may change. Always check <a href="https://www.gov.uk/guidance/making-tax-digital-for-income-tax" target="_blank">gov.uk</a> for the latest information. This is not financial or tax advice.
                 </div>
                 
-                <div class="info-box" style="background: rgba(0, 217, 255, 0.1); border-color: #00d9ff;">
-                    <h4>📅 Your Quarterly Submission Deadlines (2026/27)</h4>
-                    <table style="width: 100%; border-collapse: collapse; margin-top: 10px;">
-                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
-                            <th style="text-align: left; padding: 8px 4px; color: #8892b0; font-size: 0.85rem;">Quarter</th>
-                            <th style="text-align: left; padding: 8px 4px; color: #8892b0; font-size: 0.85rem;">Period</th>
-                            <th style="text-align: left; padding: 8px 4px; color: #8892b0; font-size: 0.85rem;">Submit By</th>
-                            <th style="text-align: left; padding: 8px 4px; color: #8892b0; font-size: 0.85rem;">Status</th>
-                        </tr>
-                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
-                            <td style="padding: 8px 4px;">Q1</td>
-                            <td style="padding: 8px 4px;">6 Apr – 5 Jul 2026</td>
-                            <td style="padding: 8px 4px; font-weight: 600;">7 Aug 2026</td>
-                            <td style="padding: 8px 4px;" id="q1status"></td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
-                            <td style="padding: 8px 4px;">Q2</td>
-                            <td style="padding: 8px 4px;">6 Jul – 5 Oct 2026</td>
-                            <td style="padding: 8px 4px; font-weight: 600;">7 Nov 2026</td>
-                            <td style="padding: 8px 4px;" id="q2status"></td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
-                            <td style="padding: 8px 4px;">Q3</td>
-                            <td style="padding: 8px 4px;">6 Oct – 5 Jan 2027</td>
-                            <td style="padding: 8px 4px; font-weight: 600;">7 Feb 2027</td>
-                            <td style="padding: 8px 4px;" id="q3status"></td>
-                        </tr>
-                        <tr>
-                            <td style="padding: 8px 4px;">Q4</td>
-                            <td style="padding: 8px 4px;">6 Jan – 5 Apr 2027</td>
-                            <td style="padding: 8px 4px; font-weight: 600;">7 May 2027</td>
-                            <td style="padding: 8px 4px;" id="q4status"></td>
-                        </tr>
-                    </table>
-                    <p style="margin-top: 8px; font-size: 0.85rem; color: #8892b0;">Deadlines are the 7th day of the month following each quarter. Final declaration (EOP) due 31 Jan 2028.</p>
-                </div>
+                <button class="restart-btn" onclick="location.reload()">Check Again</button>
             `;
             
-            // Update deadline status badges
-            const deadlines = [
-                { id: 'q1status', date: new Date('2026-08-07T23:59:59') },
-                { id: 'q2status', date: new Date('2026-11-07T23:59:59') },
-                { id: 'q3status', date: new Date('2027-02-07T23:59:59') },
-                { id: 'q4status', date: new Date('2027-05-07T23:59:59') }
-            ];
-            const now = new Date();
-            deadlines.forEach(d => {
-                const el = document.getElementById(d.id);
-                if (!el) return;
-                const diff = d.date - now;
-                if (diff < 0) {
-                    el.innerHTML = '<span style="color: #8892b0;">Past</span>';
-                } else {
-                    const days = Math.floor(diff / (1000*60*60*24));
-                    el.innerHTML = '<span style="color: #00ff88;">⏳ ' + days + ' days</span>';
-                }
-            });
+            document.getElementById('result_content').innerHTML = resultHTML;
         }
+        
+        function formatIncomeType(type) {
+            const types = {
+                'sole_trader': 'Sole Trader',
+                'landlord': 'Landlord',
+                'both': 'Sole Trader + Landlord'
+            };
+            return types[type] || type;
+        }
+        
+        // Live countdown banner
+        function updateBannerCountdown() {
+            const deadline = new Date('2026-04-06T00:00:00+01:00');
+            const now = new Date();
+            const diff = deadline - now;
+            const banner = document.getElementById('banner-countdown');
+            const bannerEl = document.getElementById('mtd-banner');
+            
+            if (diff <= 0) {
+                banner.textContent = 'MTD is NOW IN EFFECT';
+                bannerEl.style.background = 'linear-gradient(90deg, #cc0000, #880000)';
+                return;
+            }
+            
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            
+            if (days > 1) {
+                banner.textContent = days + ' days, ' + hours + ' hours';
+            } else if (days === 1) {
+                banner.textContent = '1 day, ' + hours + ' hours — ACT NOW';
+            } else {
+                banner.textContent = hours + ' hours, ' + mins + ' minutes — TODAY IS THE DAY';
+            }
+        }
+        
+        updateBannerCountdown();
+        setInterval(updateBannerCountdown, 60000);
     </script>
 </body>
 </html>
