@@ -431,7 +431,7 @@
         </div>
         
         <div class="deadline-banner" id="mtd-banner">
-            ⚠️ Making Tax Digital starts in <span class="countdown" id="banner-countdown"></span>
+            <span id="banner-icon">⚠️</span> <span id="banner-text">Making Tax Digital starts in</span> <span class="countdown" id="banner-countdown"></span>
         </div>
         
         <div style="background: #f0fdf4; border-left: 4px solid #22c55e; padding: 12px 16px; margin-bottom: 20px; border-radius: 0 8px 8px 0; font-size: 0.88rem; line-height: 1.5;">
@@ -756,7 +756,9 @@
             const bannerEl = document.getElementById('mtd-banner');
             
             if (diff <= 0) {
-                banner.textContent = 'MTD is NOW IN EFFECT';
+                document.getElementById('banner-icon').textContent = '🔴';
+                document.getElementById('banner-text').textContent = 'Making Tax Digital is NOW IN EFFECT';
+                banner.textContent = '';
                 bannerEl.style.background = 'linear-gradient(90deg, #cc0000, #880000)';
                 return;
             }
