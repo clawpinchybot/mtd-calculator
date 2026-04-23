@@ -766,10 +766,19 @@
             const bannerEl = document.getElementById('mtd-banner');
             
             if (diff <= 0) {
-                document.getElementById('banner-icon').textContent = '🔴';
-                document.getElementById('banner-text').textContent = 'Making Tax Digital is NOW IN EFFECT';
-                banner.textContent = '';
-                bannerEl.style.background = 'linear-gradient(90deg, #cc0000, #880000)';
+                // MTD is live — show countdown to first quarterly update deadline (7 Aug 2026)
+                const q1Deadline = new Date('2026-08-07T23:59:00+01:00');
+                const q1Diff = q1Deadline - now;
+                document.getElementById('banner-icon').textContent = '📅';
+                bannerEl.style.background = 'linear-gradient(90deg, #1a5276, #154360)';
+                if (q1Diff > 0) {
+                    const q1Days = Math.floor(q1Diff / (1000 * 60 * 60 * 24));
+                    document.getElementById('banner-text').textContent = 'MTD is live — First quarterly update due in';
+                    banner.textContent = q1Days + ' days (7 Aug 2026)';
+                } else {
+                    document.getElementById('banner-text').textContent = 'MTD is in effect — Quarterly updates required';
+                    banner.textContent = '';
+                }
                 return;
             }
             
